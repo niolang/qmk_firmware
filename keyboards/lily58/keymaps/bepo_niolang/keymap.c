@@ -226,7 +226,7 @@ void render_default_layer_state(void) {
     oled_write_P(PSTR(" "), false);
     switch (get_highest_layer(layer_state)) {
         case _BEPO:
-            oled_write_P(PSTR("BÉPO"), false);
+            oled_write_P(PSTR("BEPO"), false);
             break;
         case _LOWER:
             oled_write_ln_P(PSTR("LOW"), false);
