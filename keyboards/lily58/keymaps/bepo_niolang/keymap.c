@@ -21,7 +21,7 @@
 extern uint8_t is_master;
 
 enum layers {
-    _QWERTY,
+    _BEPO,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `----------------------------'           '------''--------------------'
  */
 
- [_QWERTY] = LAYOUT(
+ [_BEPO] = LAYOUT(
   MT(KC_CAPS, KC_ESC),   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_RBRC,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
   KC_LCTRL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     MT(KC_NUHS, KC_H),    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
@@ -225,8 +225,8 @@ void render_default_layer_state(void) {
     oled_write_P(PSTR("Layer"), false);
     oled_write_P(PSTR(" "), false);
     switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
-            oled_write_P(PSTR("QRTY"), false);
+        case _BEPO:
+            oled_write_P(PSTR("BÉPO"), false);
             break;
         case _LOWER:
             oled_write_ln_P(PSTR("LOW"), false);
@@ -325,9 +325,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     else {
       if (clockwise) {
-          tap_code(KC_VOLU);
-      } else {
           tap_code(KC_VOLD);
+      } else {
+          tap_code(KC_VOLU);
       }
     }
   }
